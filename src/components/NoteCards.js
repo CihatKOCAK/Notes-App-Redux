@@ -5,9 +5,10 @@ import { showNote } from "../features/notes/notesSlice";
 export default function NoteCards() {
   const items = useSelector((state) => state.notes.items);
   const dispatch = useDispatch();
+  console.log(items);
   return (
     <>
-      {items.map((item) => (
+      {items.length >1 && items.map((item) => (
         <div
           className="stored-notes"
           style={{ backgroundColor: item.color }}
@@ -16,13 +17,13 @@ export default function NoteCards() {
         >
           <div>
             <h2 id="note-title">
-              {item.title.length > 25
-                ? item.title.substring(0, 25) + "..."
+              {item.title.length > 15
+                ? item.title.substring(0, 15) + "..."
                 : item.title}
             </h2>
             <p id="note-content">
-              {item.content.length > 35
-                ? item.content.substring(0, 35) + "..."
+              {item.content.length > 25
+                ? item.content.substring(0, 25) + "..."
                 : item.content}
             </p>
           </div>

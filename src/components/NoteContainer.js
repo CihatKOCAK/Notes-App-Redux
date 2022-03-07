@@ -1,42 +1,53 @@
 import React, { useEffect, useState } from "react";
 import Colors from "./Colors";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { addNote } from "../features/notes/notesSlice";
+import { useSelector, useDispatch, showNote } from "react-redux";
+import { addNote, deleteNote } from "../features/notes/notesSlice";
 import { nanoid } from "nanoid";
 
 export default function NoteContainer() {
   const showNote = useSelector((state) => state.notes.showNote);
+  const notes = useSelector((state) => state.notes.items);
   const dispatch = useDispatch();
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addNote({ id: nanoid(), title, content, color }));
-    setTitle("");
-    setContent("");
+    dispatch( addNote({ id: nanoid(), title, content, color }) );
+    
   };
 
-  // useEffect(() => {
-  //   if (showNote) {
-  //     setTitle(showNote.title);
-  //     setContent(showNote.content);
-  //     setColor(showNote.color);
-  //   }
-  // }, [showNote]);
+  const handleDelete = () => {
+    dispatch(deleteNote({ id: showNote.selectedID }));
+    dispatch(showNote({ state: false, index: 0 }));
+  };
+
+  //update yapılacak
+  useEffect(() => {
+    if (showNote.state) {
+      setTitle(notes[showNote.index].title);
+      setContent(notes[showNote.index].content);
+      setColor(notes[showNote.index].color);
+    } else {
+      setTitle("");
+      setContent("");
+      setColor("");
+    }
+  }, [showNote.index]);
 
   return (
     <div className="note-container">
-      {showNote ? (
+      {showNote.state ? (
         <>
           <h1>Re-read your thoughts</h1>
           <div className="head-read-container">
-            <h1>Hello Wo</h1>
-            <p className="close">x</p>
+            <h1>{title}</h1>
+            <p className="close" onClick={handleDelete}>
+              x
+            </p>
           </div>
-          <p id="read-note-content">You did it</p>
+          <p id="read-note-content">{content}</p>
         </>
       ) : (
         <form className="note-container" onSubmit={handleSubmit}>

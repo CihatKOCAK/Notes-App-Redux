@@ -1,19 +1,23 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showNote } from "../features/notes/notesSlice";
+import { showNote,deleteNote } from "../features/notes/notesSlice";
 
 export default function NoteCards() {
   const items = useSelector((state) => state.notes.items);
   const dispatch = useDispatch();
-  console.log(items);
+//delete dont work
+  const handleDelete = () => {
+    dispatch(deleteNote({ id: showNote.selectedID }));
+    dispatch(showNote({ state: false, index: 0 }));
+  };
   return (
     <>
-      {items.length >1 && items.map((item) => (
+      {items && items.map((item,index) => (
         <div
           className="stored-notes"
           style={{ backgroundColor: item.color }}
-          key={item.id}
-          onClick = {() => dispatch(showNote(true))}
+          key={index}
+          onClick = {() => dispatch(showNote({state:true, index:index, selectedID:item.id}))}
         >
           <div>
             <h2 id="note-title">
@@ -28,7 +32,7 @@ export default function NoteCards() {
             </p>
           </div>
 
-          <p className="delete-note">x</p>
+          <p className="delete-note" onClick={() =>handleDelete()}>x</p>
         </div>
       ))}
     </>

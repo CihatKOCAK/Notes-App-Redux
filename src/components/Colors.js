@@ -4,34 +4,34 @@ export default function Colors() {
   return (
     <div className='colors'>
           <input type="radio" name="color" id="red" value="red" />
-          <label for="red"><span class="red"></span></label>
+          <label htmlFor="red"><span className="red"></span></label>
 
           <input type="radio" name="color" id="green" />
-          <label for="green"><span class="green"></span></label>
+          <label htmlFor="green"><span className="green"></span></label>
 
           <input type="radio" name="color" id="yellow" />
-          <label for="yellow"><span class="yellow"></span></label>
+          <label htmlFor="yellow"><span className="yellow"></span></label>
 
           <input type="radio" name="color" id="olive" />
-          <label for="olive"><span class="olive"></span></label>
+          <label htmlFor="olive"><span className="olive"></span></label>
 
           <input type="radio" name="color" id="orange" />
-          <label for="orange"><span class="orange"></span></label>
+          <label htmlFor="orange"><span className="orange"></span></label>
 
           <input type="radio" name="color" id="teal" />
-          <label for="teal"><span class="teal"></span></label>
+          <label htmlFor="teal"><span className="teal"></span></label>
 
           <input type="radio" name="color" id="blue" />
-          <label for="blue"><span class="blue"></span></label>
+          <label htmlFor="blue"><span className="blue"></span></label>
 
           <input type="radio" name="color" id="violet" />
-          <label for="violet"><span class="violet"></span></label>
+          <label htmlFor="violet"><span className="violet"></span></label>
 
           <input type="radio" name="color" id="purple" />
-          <label for="purple"><span class="purple"></span></label>
+          <label htmlFor="purple"><span className="purple"></span></label>
 
           <input type="radio" name="color" id="pink" />
-          <label for="pink"><span class="pink"></span></label>
+          <label htmlFor="pink"><span className="pink"></span></label>
         </div>
   )
 }

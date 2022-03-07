@@ -16,7 +16,7 @@ $colors: (
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Exo', sans-serif;
+  font-family: "Exo", sans-serif;
 }
 
 .colors {
@@ -61,7 +61,8 @@ $colors: (
   }
 }
 
-html, body {
+html,
+body {
   height: 100vh;
   width: 100%;
   background: #efefef;
@@ -69,12 +70,26 @@ html, body {
 #main-container {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 .note-container {
   display: flex;
   margin-right: 40px;
   flex-direction: column;
-  width: 500px;
+  width: 80%;
+  .head-read-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #efefef;
+    text-align: center;
+    .close {
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+    }
+  }
   #new-note-title {
     height: 35px;
     margin: 32px 0 24px 0;
@@ -93,7 +108,7 @@ h1 {
 }
 #side-bar {
   background: #333;
-  width: 350px;
+  width: 20%;
   height: 100vh;
   margin-right: 30px;
   overflow: scroll;
@@ -104,7 +119,7 @@ h1 {
   padding-left: 10px;
   border-radius: 5px;
   border: 1px solid #333;
-  input{
+  input {
     width: 90%;
     height: 35px;
     margin: auto;
@@ -114,6 +129,9 @@ h1 {
   }
 }
 .stored-notes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   color: #efefef;
   border: 1px solid #777;
@@ -121,15 +139,23 @@ h1 {
   h2 {
     font-size: 20px;
   }
-  
+  .delete-note {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    &:hover {
+      background: #efefef;
+    }
+  }
 }
 #create-a-note {
   cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    padding: 20px 5px;
-    background: rgba(45,255,255,0.2)
-  }
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 5px;
+  background: rgba(45, 255, 255, 0.2);
+}
 button {
   cursor: pointer;
   width: 100%;

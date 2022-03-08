@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Colors from "./Colors";
-import { useSelector, useDispatch, showNote } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addNote, deleteNote } from "../features/notes/notesSlice";
 import { nanoid } from "nanoid";
 

@@ -3,20 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const notesSlice = createSlice({
   name: "notes",
   initialState: {
-    items: [
-      {
-        id: "1",
-        title: "Hello World",
-        content: "This is a note",
-        color: "orange",
-      },
-      {
-        id: "2a",
-        title: "Hello World 2",
-        content: "This is a note 2",
-        color: "purple",
-      },
-    ],
+    items: [{ id: 1, title: "hello world!", content: "heloo", color: "green" }],
+    oldItems: [],
     showNote: {
       state: false,
       index: 0,
@@ -28,21 +16,16 @@ export const notesSlice = createSlice({
     },
     deleteNote: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id);
-      console.log(state.items);
     },
     showNote: (state, action) => {
       state.showNote = action.payload;
     },
     filterNotes: (state, action) => {
-      //deleted state items -> use localstore
-      if (action.payload === "") {
-        state.items = state.items;
-      } else {
-        state.items = state.items.filter((item) =>
-          item.title.toLowerCase().includes(action.payload.toLowerCase())
-        );
-      }
-      
+      if (state.oldItems) {state.oldItems = [...state.items];}
+      state.items = state.items.filter((item) =>
+        item.title.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      if (action.payload.lenght === 0) state.items = state.oldItems;
     },
     selectedNote: (state, action) => {
       state.items = action.payload;

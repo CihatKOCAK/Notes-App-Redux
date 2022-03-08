@@ -5,13 +5,15 @@ export default function Search() {
   const dispatch = useDispatch();
   
   const handleSearch = (e) => {
-    dispatch(filterNotes(e.target.value));
-
+    dispatch(filterNotes( e.target.value ));
+    
   };
+    //dispatch(filterNotes(e.target.value));
+
 
   return (
     <div className="search-bar">
-      <input onChange={handleSearch} type="text" placeholder="Search" />
+      <input onChange={(e) => handleSearch(e)} type="text" placeholder="Search" />
     </div>
   );
 }

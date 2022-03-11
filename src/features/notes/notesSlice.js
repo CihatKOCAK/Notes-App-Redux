@@ -4,10 +4,11 @@ export const notesSlice = createSlice({
   name: "notes",
   initialState: {
     items: [{ id: 1, title: "hello world!", content: "heloo", color: "green" }],
-    oldItems: [],
+    oldItems: [{}],
     showNote: {
       state: false,
       index: 0,
+      searching: false,
     },
   },
   reducers: {
@@ -21,11 +22,17 @@ export const notesSlice = createSlice({
       state.showNote = action.payload;
     },
     filterNotes: (state, action) => {
-      if (state.oldItems) {state.oldItems = [...state.items];}
+      if (!state.showNote.searching) {
+        state.oldItems = [...state.items];
+        state.showNote.searching = true;
+      }
       state.items = state.items.filter((item) =>
         item.title.toLowerCase().includes(action.payload.toLowerCase())
       );
-      if (action.payload.lenght === 0) state.items = state.oldItems;
+      if (action.payload.length === 0) {
+        state.items = state.oldItems;
+        state.showNote.searching = false;
+      }
     },
     selectedNote: (state, action) => {
       state.items = action.payload;

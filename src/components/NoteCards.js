@@ -20,7 +20,7 @@ export default function NoteCards() {
                 key={index}
               >
                 <div
-                  style={{ with: "200px" }}
+                  className="note-context"
                   onClick={() =>
                     dispatch(
                       showNote({

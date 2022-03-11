@@ -15,6 +15,8 @@ export default function NoteContainer() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch( addNote({ id: nanoid(), title, content, color }) );
+    setTitle("");
+    setContent("");
     
   };
 
@@ -23,7 +25,7 @@ export default function NoteContainer() {
     dispatch(showNote({ state: false, index: 0 }));
   };
 
-  //update yapılacak
+  
   useEffect(() => {
     if (showNote.state) {
       setTitle(notes[showNote.index].title);
